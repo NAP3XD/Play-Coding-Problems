@@ -1,4 +1,4 @@
-#!/home/nico/Documents/ITSC-3155/SheepComp/venv/bin/python3
+#!/home/nico/Documents/Play-Coding-Problems/ITSC-3155/SheepComp/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
