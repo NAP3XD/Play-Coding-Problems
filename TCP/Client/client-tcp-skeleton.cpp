@@ -56,12 +56,20 @@ int main(int argc, char *argv[])
    
    
    
-   // PASTE CODE FROM STEP #1 HERE
+   // Initialize data structure
+   sockme.sin_family = AF_INET;
+
+   if ((sockme.sin_addr.s_addr = inet_addr(hostnum)) == INADDR_NONE)
+   {
+      cout << "Invalid dotted decimal address" << endl;
+      
+      exit(-1);
+   }
    
    
    
    
-   // PASTE CODE FROM STEP #2 HERE
+   sockme.sin_port = htons(portnum);
    
    
    
@@ -73,7 +81,14 @@ int main(int argc, char *argv[])
    // Run indefinitely, until the user enters the /QUIT command
    while(true)
    {
-      // PASTE CODE FROM STEP #3 HERE
+      s = socket(PF_INET, SOCK_STREAM, 0);
+
+      if ((result = connect (s, (struct sockaddr *) &sockme, sizeof(sockme))))
+      {
+         perror("Connect failed\n");
+         close (s);
+         exit(-1);
+      };
       
       
       cout << "--------------------------------------" << endl;
